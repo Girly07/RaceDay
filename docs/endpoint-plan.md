@@ -28,4 +28,9 @@
 | GET | `/api/events/{eventId}/enrolments` | Get all enrolments for an event (organiser view). | Organiser (owner) | None | 200 OK – array of enrolments with participant details |
 | GET | `/api/users/me/enrolments` | Get the authenticated participant's own enrolments. | Participant | None | 200 OK – array of enrolments with event & category details |
 | GET | `/api/enrolments/{id}` | Get a specific enrolment by ID. | Any logged-in (participant or organiser) | None | 200 OK – enrolment object <br> 403 Forbidden – not allowed <br> 404 Not Found |
+| **Results** ||||||
+| POST | `/api/events/{eventId}/results` | Upload results for multiple enrolments (organiser). | Organiser (owner) | `{ "results": [ { "enrolmentId", "finishTime", "position", "status" } ] }` | 201 Created – array of result objects <br> 400 Bad Request – enrolment already has result <br> 404 Not Found |
+| PUT | `/api/results/{id}` | Update an existing result (organiser). | Organiser (owner) | `{ "finishTime", "position", "status" }` | 200 OK – updated result <br> 404 Not Found |
+| GET | `/api/events/{eventId}/results` | Get all results for an event (public). | Public (none) | None | 200 OK – array of results with participant names and categories |
+| GET | `/api/users/me/results` | Get the authenticated participant's own results (history). | Participant | None | 200 OK – array of results with event/category details |
 | PUT | `/api/enrolments/{id}/cancel` | Cancel an enrolment. | Participant or Organiser (owner) | None | 200 OK – updated enrolment with status 'Cancelled' <br> 403 Forbidden – not allowed <br> 404 Not Found |
