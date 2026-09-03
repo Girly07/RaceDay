@@ -38,3 +38,26 @@ CREATE TABLE Category (
     DistanceKm DECIMAL(5,2) NOT NULL
 );
 GO
+
+-- 4. EventCategory (junction)
+CREATE TABLE EventCategory (
+    EventCategoryID INT IDENTITY(1,1) PRIMARY KEY,
+    EventID INT NOT NULL FOREIGN KEY REFERENCES Event(EventID),
+    CategoryID INT NOT NULL FOREIGN KEY REFERENCES Category(CategoryID),
+    StartTime TIME,
+    MaxParticipants INT,
+    Price DECIMAL(10,2),
+    CONSTRAINT UQ_EventCategory UNIQUE (EventID, CategoryID)
+);
+GO
+
+-- 5. Enrolment
+CREATE TABLE Enrolment (
+    EnrolmentID INT IDENTITY(1,1) PRIMARY KEY,
+    ParticipantID INT NOT NULL FOREIGN KEY REFERENCES [User](UserID),
+    EventCategoryID INT NOT NULL FOREIGN KEY REFERENCES EventCategory(EventCategoryID),
+    EnrolmentDate DATETIME DEFAULT GETDATE(),
+    Status NVARCHAR(20) NOT NULL CHECK (Status IN ('Pending', 'Confirmed', 'Cancelled')) DEFAULT 'Pending',
+    PaymentStatus NVARCHAR(20) NOT NULL CHECK (PaymentStatus IN ('Unpaid', 'Paid', 'Refunded')) DEFAULT 'Unpaid'
+);
+GO
