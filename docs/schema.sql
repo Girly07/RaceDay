@@ -61,3 +61,13 @@ CREATE TABLE Enrolment (
     PaymentStatus NVARCHAR(20) NOT NULL CHECK (PaymentStatus IN ('Unpaid', 'Paid', 'Refunded')) DEFAULT 'Unpaid'
 );
 GO
+
+-- 6. Result
+CREATE TABLE Result (
+    ResultID INT IDENTITY(1,1) PRIMARY KEY,
+    EnrolmentID INT NOT NULL UNIQUE FOREIGN KEY REFERENCES Enrolment(EnrolmentID),
+    FinishTime TIME,
+    Position INT,
+    Status NVARCHAR(20) NOT NULL CHECK (Status IN ('Finished', 'DNF', 'DNS'))
+);
+GO
