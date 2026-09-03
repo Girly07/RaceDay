@@ -98,3 +98,22 @@ INSERT INTO Event (OrganiserID, Name, Description, EventDate, Location, Status)
 VALUES 
 (1, 'Cape Town Cycle Tour', 'Annual cycling event', '2026-03-08 07:00:00', 'Cape Town', 'Open'),
 (2, 'Soweto Marathon', 'Road running event', '2026-04-12 06:00:00', 'Soweto', 'Open');
+
+-- Link categories to events (EventCategory)
+INSERT INTO EventCategory (EventID, CategoryID, StartTime, MaxParticipants, Price)
+VALUES 
+(1, 3, '07:00:00', 5000, 250.00),
+(1, 4, '07:00:00', 3000, 350.00),
+(2, 2, '06:30:00', 8000, 150.00),
+(2, 3, '06:00:00', 6000, 200.00);
+
+-- Enrolments
+INSERT INTO Enrolment (ParticipantID, EventCategoryID, Status, PaymentStatus)
+VALUES 
+(3, 1, 'Confirmed', 'Paid'),
+(4, 3, 'Pending', 'Unpaid');
+
+-- Results
+INSERT INTO Result (EnrolmentID, FinishTime, Position, Status)
+VALUES 
+(1, '03:15:30', 102, 'Finished');
