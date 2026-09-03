@@ -84,3 +84,17 @@ INSERT INTO [User] (FirstName, LastName, Email, PasswordHash, Role)
 VALUES 
 ('Lebogang', 'Moeketsi', 'lebo@runner.com', 'hashed_password_3', 'Participant'),
 ('Kaizer', 'White', 'kaizer@runner.com', 'hashed_password_4', 'Participant');
+
+-- Insert categories
+INSERT INTO Category (Name, Description, DistanceKm)
+VALUES 
+('5km Fun Run', 'Short and easy', 5.0),
+('10km Challenge', 'Medium distance', 10.0),
+('Half Marathon', '21.1 km', 21.1),
+('Full Marathon', '42.2 km', 42.2);
+
+-- Insert events
+INSERT INTO Event (OrganiserID, Name, Description, EventDate, Location, Status)
+VALUES 
+(1, 'Cape Town Cycle Tour', 'Annual cycling event', '2026-03-08 07:00:00', 'Cape Town', 'Open'),
+(2, 'Soweto Marathon', 'Road running event', '2026-04-12 06:00:00', 'Soweto', 'Open');
