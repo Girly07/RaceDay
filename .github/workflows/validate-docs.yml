@@ -1,0 +1,28 @@
+name: Validate Docs Folder
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for required documentation files
+        run: |
+          if [ ! -f docs/erd.png ] && [ ! -f docs/erd.pdf ]; then
+            echo "Missing ERD file (erd.png or erd.pdf)"
+            exit 1
+          fi
+          if [ ! -f docs/endpoint-plan.md ] && [ ! -f docs/endpoint-plan.pdf ]; then
+            echo "Missing endpoint plan (endpoint-plan.md or .pdf)"
+            exit 1
+          fi
+          if [ ! -f docs/schema.sql ]; then
+            echo "Missing schema.sql"
+            exit 1
+          fi
+          echo "All required files present."
