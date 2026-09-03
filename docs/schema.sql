@@ -71,3 +71,16 @@ CREATE TABLE Result (
     Status NVARCHAR(20) NOT NULL CHECK (Status IN ('Finished', 'DNF', 'DNS'))
 );
 GO
+
+-- Seed data
+-- Insert two organisers
+INSERT INTO [User] (FirstName, LastName, Email, PasswordHash, Role)
+VALUES 
+('John', 'Doe', 'john@organiser.com', 'hashed_password_1', 'Organiser'),
+('Jane', 'Smith', 'jane@organiser.com', 'hashed_password_2', 'Organiser');
+
+-- Insert two participants
+INSERT INTO [User] (FirstName, LastName, Email, PasswordHash, Role)
+VALUES 
+('Alice', 'Brown', 'alice@runner.com', 'hashed_password_3', 'Participant'),
+('Bob', 'White', 'bob@runner.com', 'hashed_password_4', 'Participant');
