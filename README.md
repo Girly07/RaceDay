@@ -15,4 +15,4 @@ GitHub Actions validates the presence of required planning documents in the `/do
 ![CI/CD green build](screenshots/green-build.png)
 
 ## Video Presentation
-[Watch the walkthrough on YouTube](https://youtu.be/your-video-link)
+[Watch the walkthrough on YouTube](https://youtu.be/skpsFJt8tBE?si=4aUrEvBs-3HFk_N-)
